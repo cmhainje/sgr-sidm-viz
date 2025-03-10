@@ -28,6 +28,14 @@
       padding-bottom: 60px;
     }
 
+    .width-lim {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 16px;
+      text-align: left;
+      text-wrap: pretty;
+    }
+
     a {
       display: block;
       padding: 6px 10px;
@@ -45,6 +53,7 @@
     div.links {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       gap: 8px;
       justify-content: center;
       align-items: center;
@@ -98,37 +107,48 @@
 
     <h1>Sagittarius &amp; SIDM</h1>
 
-    <div class="links">
+    <div class="width-lim links">
       <a href="https://arxiv.org">Paper (arXiv)</a>
       <a href="/sgr-sidm-viz/high-res-still/">3D high-resolution stills</a>
       <a href="/sgr-sidm-viz/low-res-animated/">3D low-resolution animation</a>
     </div>
 
-    <h3>Authors</h3>
-    <p>
-      Connor Hainje, Mariangela Lisanti, Oren Slone, and Denis Erkal
-    </p>
+    <div class="width-lim">
+      <h3>Authors</h3>
+      <p>
+        Connor Hainje, Mariangela Lisanti, Oren Slone, and Denis Erkal
+      </p>
+    </div>
 
-    <h3>Abstract</h3>
-    <p style="max-width: 600px; margin: 0 auto; text-align: left; text-wrap: pretty;">
-      This work explores how assumptions regarding the particle-physics nature of dark matter can alter the evolution of
-      the Sagittarius (Sgr) dwarf spheroidal galaxy and its expansive stellar stream. We run a large suite of $N$-body
-      simulations to model the infall of a Sgr-like dwarf, exploring how the presence of dark matter self interactions
-      impacts its evolution. For a scattering cross section of $\sigma/m_\chi = 30~\text{cm}^2\text{/g}$ (at orbital
-      velocity scales), these interactions result in significantly less stellar mass and little to no dark matter bound
-      to the progenitor at the present day. To isolate the cause of this mass loss, we introduce a novel technique for
-      controlling which pairs of dark matter simulation particles can interact. This enables us to identify ram-pressure
-      evaporation—the scattering of satellite and host dark matter particles—as the primary source of the enhanced
-      mass loss. The rapid disintegration of the Sgr progenitor when self interactions are allowed alters some key
-      properties of the resulting stellar stream, most dramatically suppressing the presence of a "spur" on the
-      apocenter of the trailing stream arm that correlates with the mass of the satellite at last pericenter. We
-      demonstrate how the effects on the Sgr system scale with the particular choice of self-interaction cross section,
-      which affects the degree of ram-pressure evaporation. These findings generalize beyond the Sgr system,
-      underscoring that dwarf stellar streams and dwarf galaxies with close passages may serve as sensitive probes for
-      dark matter self interactions.
-    </p>
+    <div class="width-lim">
+      <h3>Abstract</h3>
+      <p>
+        This work explores how assumptions regarding the particle-physics nature of dark matter can alter the evolution
+        of
+        the Sagittarius (Sgr) dwarf spheroidal galaxy and its expansive stellar stream. We run a large suite of $N$-body
+        simulations to model the infall of a Sgr-like dwarf, exploring how the presence of dark matter self interactions
+        impacts its evolution. For a scattering cross section of $\sigma/m_\chi = 30~\text{cm}^2\text{/g}$ (at orbital
+        velocity scales), these interactions result in significantly less stellar mass and little to no dark matter
+        bound
+        to the progenitor at the present day. To isolate the cause of this mass loss, we introduce a novel technique for
+        controlling which pairs of dark matter simulation particles can interact. This enables us to identify
+        ram-pressure
+        evaporation—the scattering of satellite and host dark matter particles—as the primary source of the enhanced
+        mass loss. The rapid disintegration of the Sgr progenitor when self interactions are allowed alters some key
+        properties of the resulting stellar stream, most dramatically suppressing the presence of a "spur" on the
+        apocenter of the trailing stream arm that correlates with the mass of the satellite at last pericenter. We
+        demonstrate how the effects on the Sgr system scale with the particular choice of self-interaction cross
+        section,
+        which affects the degree of ram-pressure evaporation. These findings generalize beyond the Sgr system,
+        underscoring that dwarf stellar streams and dwarf galaxies with close passages may serve as sensitive probes for
+        dark matter self interactions.
+      </p>
+    </div>
 
-    <h3>Video</h3>
+    <div class="width-lim">
+      <h3>Video</h3>
+    </div>
+
     <iframe class="video" width="560" height="315"
       src="https://www.youtube-nocookie.com/embed/_BAduDAuJcA?si=pis1PxMHZN4X1ABL" title="YouTube video player"
       frameborder="0"
