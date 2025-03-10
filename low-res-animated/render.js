@@ -115,7 +115,9 @@ class PointCloudAnimator {
   }
 
   async initialize() {
-    this.snapshotBuffer = await (await fetch(this.path)).arrayBuffer();
+    this.snapshotBuffer = await (
+      await fetch(`${import.meta.env.BASE_URL}${this.path}`)
+    ).arrayBuffer();
 
     const headerView = new DataView(this.snapshotBuffer, 0, 16);
     this.maxSnap = headerView.getUint32(0, true) - 1;
@@ -181,8 +183,9 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 document.body.appendChild(renderer.domElement);
-
-const buffer = await (await fetch("/data/mw_disk.bin")).arrayBuffer();
+const buffer = await (
+  await fetch(`${import.meta.env.BASE_URL}/data/mw_disk.bin`)
+).arrayBuffer();
 const positions = new Float32Array(buffer);
 const mwGeo = new THREE.BufferGeometry();
 mwGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));

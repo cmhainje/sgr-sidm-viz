@@ -3,7 +3,9 @@ import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { GUI } from "lil-gui";
 
 async function loadPositions(filename) {
-  const buffer = await (await fetch(filename)).arrayBuffer();
+  const buffer = await (
+    await fetch(`${import.meta.env.BASE_URL}${filename}`)
+  ).arrayBuffer();
   const positions = new Float32Array(buffer);
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
