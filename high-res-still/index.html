@@ -5,8 +5,20 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>clouds</title>
+  <title>High-res still | Sgr & SIDM</title>
   <style>
+    @import url('https://rsms.me/inter/inter.css');
+
+    html {
+      font-family: 'Inter', sans-serif;
+    }
+
+    @supports (font-variation-settings: normal) {
+      html {
+        font-family: 'Inter var', sans-serif;
+      }
+    }
+
     body {
       margin: 0;
       width: 100vw;
@@ -17,8 +29,44 @@
       width: 100%;
       height: 100%;
     }
+
+    .gui-message {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: 4px;
+
+      p {
+        line-height: 16px;
+
+        a {
+          color: inherit;
+        }
+      }
+    }
   </style>
-  <script type="module" crossorigin src="/sgr-sidm-viz/assets/HR-D38ag2wd.js"></script>
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../icon/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../icon/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../icon/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../icon/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../icon/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../icon/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../icon/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../icon/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="../icon/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="../icon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="../icon/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="../icon/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="../icon/favicon-128.png" sizes="128x128" />
+  <meta name="application-name" content="&nbsp;" />
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="../icon/mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="../icon/mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="../icon/mstile-150x150.png" />
+  <meta name="msapplication-wide310x150logo" content="../icon/mstile-310x150.png" />
+  <meta name="msapplication-square310x310logo" content="../icon/mstile-310x310.png" />
+  <script type="module" crossorigin src="/sgr-sidm-viz/assets/HR-yr3Cl-Tv.js"></script>
   <link rel="modulepreload" crossorigin href="/sgr-sidm-viz/assets/modulepreload-polyfill-B5Qt9EMX.js">
   <link rel="modulepreload" crossorigin href="/sgr-sidm-viz/assets/lil-gui.esm-C5Hipvuz.js">
 </head>
