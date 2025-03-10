@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sidm + sgr</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .controls {
+      text-align: center;
+      /* width: fit-content;
+      margin: 0 auto; */
+    }
+  </style>
+  <script type="module" crossorigin src="/sgr-sidm-viz/assets/main-CGV5HAHC.js"></script>
+  <link rel="modulepreload" crossorigin href="/sgr-sidm-viz/assets/modulepreload-polyfill-B5Qt9EMX.js">
+</head>
+
+<body>
+  <main>
+    <h1>sidm + sgr</h1>
+
+    <video src="/sgr-sidm-viz/movies/cdm_movie.mp4" width="49%" style="display: inline;"></video>
+    <video src="/sgr-sidm-viz/movies/sidm_movie.mp4" width="49%" style="display: inline;"></video>
+    <div class="controls">
+      <button type="button" id="playstart">play (start together)</button>
+      <button type="button" id="playend">play (end together)</button>
+      <button type="button" id="restart">restart</button>
+      <br>
+      <label>
+        speed (<span id="currentspeed">1x</span>)
+        <input type="range" id="playspeed" min="0" max="200" step="10" value="100">
+      </label>
+    </div>
+
+    <p>
+      <a href="/snapshots/">view the final high-resolution snapshots of the streams in 3D!</a>
+    </p>
+  </main>
+
+</body>
+
+</html>
