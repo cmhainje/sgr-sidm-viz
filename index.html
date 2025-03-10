@@ -50,6 +50,11 @@
       justify-content: center;
       align-items: center;
     }
+
+    .video {
+      width: min(100vw, 200vh);
+      height: min(50vw, 100vh);
+    }
   </style>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
@@ -125,81 +130,13 @@
     </p>
 
     <h3>Video</h3>
-
-    <video src="/movies/cdm_movie.mp4" width="49%" style="display: inline;"></video>
-    <video src="/movies/sidm_movie.mp4" width="49%" style="display: inline;"></video>
-    <div class="controls">
-      <button type="button" id="playstart">play (start together)</button>
-      <button type="button" id="playend">play (end together)</button>
-      <button type="button" id="restart">restart</button>
-      <br>
-      <br>
-      <label>
-        speed (<span id="currentspeed">1x</span>)
-        <input type="range" id="playspeed" min="0" max="200" step="10" value="100">
-      </label>
-    </div>
+    <iframe class="video" width="560" height="315"
+      src="https://www.youtube-nocookie.com/embed/_BAduDAuJcA?si=pis1PxMHZN4X1ABL" title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
   </main>
-
-  <script type="module">
-    const playBtn = document.getElementById("playstart");
-    const endBtn = document.getElementById("playend");
-    const restBtn = document.getElementById("restart");
-    const videos = Array.from(document.getElementsByTagName("video"));
-    const speed = document.getElementById("playspeed");
-    const speedtext = document.getElementById("currentspeed");
-
-    let maxDuration = 0;
-    videos.forEach(v => {
-      v.addEventListener('loadedmetadata', () => {
-        maxDuration = Math.max(maxDuration, v.duration);
-      });
-    });
-
-    playBtn.addEventListener("click", () => {
-      videos.forEach(v => {
-        v.play();
-      });
-    });
-
-    endBtn.addEventListener("click", () => {
-      videos.forEach(v => {
-        setTimeout(() => { v.play() }, (maxDuration - v.duration) * 1000)
-      });
-    });
-
-    restBtn.addEventListener("click", () => {
-      videos.forEach(v => {
-        v.pause();
-        v.currentTime = 0;
-      })
-    })
-
-    speed.addEventListener("change", (e) => {
-      const s = e.target.value / 100;
-      videos.forEach(v => {
-        v.playbackRate = s;
-        speedtext.innerText = `${s}x`
-      })
-    })
-  </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      renderMathInElement(document.body, {
-        // customised options
-        // • auto-render specific keys, e.g.:
-        delimiters: [
-          { left: '$$', right: '$$', display: true },
-          { left: '$', right: '$', display: false },
-          { left: '\\(', right: '\\)', display: false },
-          { left: '\\[', right: '\\]', display: true }
-        ],
-        // • rendering keys, e.g.:
-        throwOnError: false
-      });
-    });
-  </script>
 
 </body>
 
