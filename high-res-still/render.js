@@ -74,25 +74,25 @@ const materials = {
 };
 
 // Load the data
-const mwGeo = await loadPositions("/data/mw_disk.bin");
+const mwGeo = await loadPositions("data/mw_disk.bin");
 const mwPts = new THREE.Points(mwGeo, materials.mw);
 scene.add(mwPts);
 
-const cdmStarGeo = await loadPositions("/data/cdm_star.bin");
+const cdmStarGeo = await loadPositions("data/cdm_star.bin");
 const cdmStarPts = new THREE.Points(cdmStarGeo, materials.cdmStar);
 scene.add(cdmStarPts);
 
-const cdmDarkGeo = await loadPositions("/data/cdm_dark.bin");
+const cdmDarkGeo = await loadPositions("data/cdm_dark.bin");
 const cdmDarkPts = new THREE.Points(cdmDarkGeo, materials.cdmDark);
 cdmDarkPts.visible = false;
 scene.add(cdmDarkPts);
 
-const sidmStarGeo = await loadPositions("/data/sidm_star.bin");
+const sidmStarGeo = await loadPositions("data/sidm_star.bin");
 const sidmStarPts = new THREE.Points(sidmStarGeo, materials.sidmStar);
 sidmStarPts.visible = false;
 scene.add(sidmStarPts);
 
-const sidmDarkGeo = await loadPositions("/data/sidm_dark.bin");
+const sidmDarkGeo = await loadPositions("data/sidm_dark.bin");
 const sidmDarkPts = new THREE.Points(sidmDarkGeo, materials.sidmDark);
 sidmDarkPts.visible = false;
 scene.add(sidmDarkPts);

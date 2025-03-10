@@ -184,7 +184,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 document.body.appendChild(renderer.domElement);
 const buffer = await (
-  await fetch(`${import.meta.env.BASE_URL}/data/mw_disk.bin`)
+  await fetch(`${import.meta.env.BASE_URL}data/mw_disk.bin`)
 ).arrayBuffer();
 const positions = new Float32Array(buffer);
 const mwGeo = new THREE.BufferGeometry();
@@ -220,17 +220,17 @@ const sunPt = new THREE.Points(
 );
 scene.add(sunPt);
 
-const cdmStar = new PointCloudAnimator("/data/cdm_lr_star.bin", "star");
+const cdmStar = new PointCloudAnimator("data/cdm_lr_star.bin", "star");
 scene.add(cdmStar.mesh);
 
-const cdmDark = new PointCloudAnimator("/data/cdm_lr_dark.bin", "dark");
+const cdmDark = new PointCloudAnimator("data/cdm_lr_dark.bin", "dark");
 cdmDark.material.color.set("#FF0000");
 scene.add(cdmDark.mesh);
 
-const sidmStar = new PointCloudAnimator("/data/sidm_lr_star.bin", "star");
+const sidmStar = new PointCloudAnimator("data/sidm_lr_star.bin", "star");
 scene.add(sidmStar.mesh);
 
-const sidmDark = new PointCloudAnimator("/data/sidm_lr_dark.bin", "dark");
+const sidmDark = new PointCloudAnimator("data/sidm_lr_dark.bin", "dark");
 sidmDark.material.color.set("#FF0000");
 scene.add(sidmDark.mesh);
 
