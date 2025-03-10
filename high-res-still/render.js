@@ -124,8 +124,21 @@ const settings = {
     gui.reset();
   },
 };
-gui.add(settings, "resetCamera");
-gui.add(settings, "resetSettings");
+
+const newContainer = document.createElement("div");
+newContainer.style = "margin: 4px 0; padding: 0 4px;";
+const newDiv = document.createElement("div");
+newDiv.className = "gui-message";
+newDiv.innerHTML = `
+    <p><b>High-resolution still</b></p>
+    <p><a href="/sgr-sidm-viz/">Go back to the landing page</a></p>
+    <p><a href="/sgr-sidm-viz/low-res-animated/">Go to the low-resolution animation</a></p>
+`;
+newContainer.append(newDiv);
+gui.$children.prepend(newContainer);
+
+gui.add(settings, "resetCamera").name("Reset camera");
+gui.add(settings, "resetSettings").name("Reset settings");
 const cdmSettings = {
   stars: true,
   starColor: "#66ccee",
@@ -133,10 +146,10 @@ const cdmSettings = {
   darkColor: "#ee6677",
 };
 const cdmGui = gui.addFolder("CDM");
-cdmGui.add(cdmSettings, "stars");
-cdmGui.addColor(cdmSettings, "starColor");
-cdmGui.add(cdmSettings, "darkMatter");
-cdmGui.addColor(cdmSettings, "darkColor");
+cdmGui.add(cdmSettings, "stars").name("Enable stars");
+cdmGui.addColor(cdmSettings, "starColor").name("Star color");
+cdmGui.add(cdmSettings, "darkMatter").name("Enable DM");
+cdmGui.addColor(cdmSettings, "darkColor").name("DM color");
 
 const sidmSettings = {
   stars: false,
@@ -145,10 +158,10 @@ const sidmSettings = {
   darkColor: "#aa3377",
 };
 const sidmGui = gui.addFolder("SIDM");
-sidmGui.add(sidmSettings, "stars");
-sidmGui.addColor(sidmSettings, "starColor");
-sidmGui.add(sidmSettings, "darkMatter");
-sidmGui.addColor(sidmSettings, "darkColor");
+sidmGui.add(sidmSettings, "stars").name("Enable stars");
+sidmGui.addColor(sidmSettings, "starColor").name("Star color");
+sidmGui.add(sidmSettings, "darkMatter").name("Enable DM");
+sidmGui.addColor(sidmSettings, "darkColor").name("DM color");
 
 function animate() {
   // update visibilities

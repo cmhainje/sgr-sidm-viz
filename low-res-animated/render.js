@@ -10,8 +10,15 @@ const params = {
   frame: 0,
   speed: 1.0,
   particleSize: 0.4,
+  cdmStarColor: "#66ccee",
+  cdmDarkColor: "#ee6677",
+  sidmStarColor: "#ccbb44",
+  sidmDarkColor: "#aa3377",
   resetCamera: () => {
     controls.reset();
+  },
+  resetSettings: () => {
+    gui.reset();
   },
 };
 
@@ -221,17 +228,19 @@ const sunPt = new THREE.Points(
 scene.add(sunPt);
 
 const cdmStar = new PointCloudAnimator("data/cdm_lr_star.bin", "star");
+cdmStar.material.color.set(params.cdmStarColor);
 scene.add(cdmStar.mesh);
 
 const cdmDark = new PointCloudAnimator("data/cdm_lr_dark.bin", "dark");
-cdmDark.material.color.set("#FF0000");
+cdmDark.material.color.set(params.cdmDarkColor);
 scene.add(cdmDark.mesh);
 
 const sidmStar = new PointCloudAnimator("data/sidm_lr_star.bin", "star");
+sidmStar.material.color.set(params.sidmStarColor);
 scene.add(sidmStar.mesh);
 
 const sidmDark = new PointCloudAnimator("data/sidm_lr_dark.bin", "dark");
-sidmDark.material.color.set("#FF0000");
+sidmDark.material.color.set(params.sidmDarkColor);
 scene.add(sidmDark.mesh);
 
 camera.position.y = -200;
@@ -246,10 +255,28 @@ controls.maxDistance = 300;
 controls.saveState();
 
 const gui = new GUI();
-const modelController = gui.add(params, "model", { CDM: 0, SIDM: 1 });
-gui.add(params, "stars");
-gui.add(params, "darkMatter");
-const playbackFolder = gui.addFolder("Playback");
+
+const newContainer = document.createElement("div");
+newContainer.style = "margin: 4px 0; padding: 0 4px;";
+const newDiv = document.createElement("div");
+newDiv.className = "gui-message";
+newDiv.innerHTML = `
+    <p><b>Low-resolution animation</b></p>
+    <p><a href="/sgr-sidm-viz/">Go back to the landing page</a></p>
+    <p><a href="/sgr-sidm-viz/high-res-still/">Go to the high-resolution still</a></p>
+`;
+newContainer.append(newDiv);
+gui.$children.prepend(newContainer);
+
+gui.add(params, "resetCamera").name("Reset camera");
+gui.add(params, "resetSettings").name("Reset settings");
+
+const modelController = gui
+  .add(params, "model", { CDM: 0, SIDM: 1 })
+  .name("DM model");
+gui.add(params, "stars").name("Enable stars");
+gui.add(params, "darkMatter").name("Enable DM");
+const playbackFolder = gui.addFolder("Playback controls");
 const playingController = playbackFolder
   .add(params, "playing")
   .onChange((value) => {
@@ -257,14 +284,18 @@ const playingController = playbackFolder
     cdmDark.playing = value;
     sidmStar.playing = value;
     sidmDark.playing = value;
-  });
+  })
+  .name("Playing");
 
-playbackFolder.add(params, "speed", 0.1, 2.5).onChange((value) => {
-  cdmStar.playbackSpeed = value;
-  cdmDark.playbackSpeed = value;
-  sidmStar.playbackSpeed = value;
-  sidmDark.playbackSpeed = value;
-});
+playbackFolder
+  .add(params, "speed", 0.1, 2.5)
+  .onChange((value) => {
+    cdmStar.playbackSpeed = value;
+    cdmDark.playbackSpeed = value;
+    sidmStar.playbackSpeed = value;
+    sidmDark.playbackSpeed = value;
+  })
+  .name("Speed");
 
 const frameController = playbackFolder
   .add(params, "frame", 0, 442)
@@ -274,9 +305,15 @@ const frameController = playbackFolder
     cdmDark.seekToFrame(value);
     sidmStar.seekToFrame(value);
     sidmDark.seekToFrame(value);
-  });
+  })
+  .name("Frame number");
 
-gui.add(params, "resetCamera");
+const colorsFolder = gui.addFolder("Colors");
+colorsFolder.addColor(params, "cdmStarColor").name("CDM star color");
+colorsFolder.addColor(params, "cdmDarkColor").name("CDM DM color");
+colorsFolder.addColor(params, "sidmStarColor").name("SIDM star color");
+colorsFolder.addColor(params, "sidmDarkColor").name("SIDM DM color");
+colorsFolder.close();
 
 modelController.onChange((v) => {
   switch (v) {
