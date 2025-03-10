@@ -27,7 +27,42 @@
     main {
       padding-bottom: 60px;
     }
+
+    a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 4px;
+      /* border: 1px solid #808080; */
+      text-decoration: none;
+      color: inherit;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    a:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    div.links {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
   </style>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+    integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+    integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh"
+    crossorigin="anonymous"></script>
+
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+    integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh"
+    crossorigin="anonymous"></script>
 
 
   <link rel="apple-touch-icon-precomposed" sizes="57x57" href="icon/apple-touch-icon-57x57.png" />
@@ -50,7 +85,6 @@
   <meta name="msapplication-square150x150logo" content="icon/mstile-150x150.png" />
   <meta name="msapplication-wide310x150logo" content="icon/mstile-310x150.png" />
   <meta name="msapplication-square310x310logo" content="icon/mstile-310x310.png" />
-
   <script type="module" crossorigin src="/sgr-sidm-viz/assets/main-CGV5HAHC.js"></script>
   <link rel="modulepreload" crossorigin href="/sgr-sidm-viz/assets/modulepreload-polyfill-B5Qt9EMX.js">
 </head>
@@ -59,17 +93,39 @@
   <main>
     <img src="icon/android-chrome-512x512.png" width="192" style="margin-top: 32px;">
 
-    <h1>Sgr &amp; SIDM</h1>
+    <h1>Sagittarius &amp; SIDM</h1>
 
+    <div class="links">
+      <a href="https://arxiv.org">Paper (arXiv)</a>
+      <a href="/sgr-sidm-viz/high-res-still/">3D high-resolution stills</a>
+      <a href="/sgr-sidm-viz/low-res-animated/">3D low-resolution animation</a>
+    </div>
+
+    <h3>Authors</h3>
     <p>
-      <a href="/sgr-sidm-viz/high-res-still/">3D viewer: final high-resolution snapshots of the streams</a>
+      Connor Hainje, Mariangela Lisanti, Oren Slone, and Denis Erkal
     </p>
 
-    <p>
-      <a href="/sgr-sidm-viz/low-res-animated/">3D viewer: low-resolution animation of the stream evolution</a>
+    <h3>Abstract</h3>
+    <p style="max-width: 600px; margin: 0 auto; text-align: left; text-wrap: pretty;">
+      This work explores how assumptions regarding the particle-physics nature of dark matter can alter the evolution of
+      the Sagittarius (Sgr) dwarf spheroidal galaxy and its expansive stellar stream. We run a large suite of $N$-body
+      simulations to model the infall of a Sgr-like dwarf, exploring how the presence of dark matter self interactions
+      impacts its evolution. For a scattering cross section of $\sigma/m_\chi = 30~\text{cm}^2\text{/g}$ (at orbital
+      velocity scales), these interactions result in significantly less stellar mass and little to no dark matter bound
+      to the progenitor at the present day. To isolate the cause of this mass loss, we introduce a novel technique for
+      controlling which pairs of dark matter simulation particles can interact. This enables us to identify ram-pressure
+      evaporation—the scattering of satellite and host dark matter particles—as the primary source of the enhanced
+      mass loss. The rapid disintegration of the Sgr progenitor when self interactions are allowed alters some key
+      properties of the resulting stellar stream, most dramatically suppressing the presence of a "spur" on the
+      apocenter of the trailing stream arm that correlates with the mass of the satellite at last pericenter. We
+      demonstrate how the effects on the Sgr system scale with the particular choice of self-interaction cross section,
+      which affects the degree of ram-pressure evaporation. These findings generalize beyond the Sgr system,
+      underscoring that dwarf stellar streams and dwarf galaxies with close passages may serve as sensitive probes for
+      dark matter self interactions.
     </p>
 
-    <p>Video:</p>
+    <h3>Video</h3>
 
     <video src="/sgr-sidm-viz/movies/cdm_movie.mp4" width="49%" style="display: inline;"></video>
     <video src="/sgr-sidm-viz/movies/sidm_movie.mp4" width="49%" style="display: inline;"></video>
@@ -86,6 +142,23 @@
     </div>
 
   </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        // customised options
+        // • auto-render specific keys, e.g.:
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+          { left: '\\(', right: '\\)', display: false },
+          { left: '\\[', right: '\\]', display: true }
+        ],
+        // • rendering keys, e.g.:
+        throwOnError: false
+      });
+    });
+  </script>
 
 </body>
 
