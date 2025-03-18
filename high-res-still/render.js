@@ -146,9 +146,9 @@ const cdmSettings = {
   darkColor: "#ee6677",
 };
 const cdmGui = gui.addFolder("CDM");
-cdmGui.add(cdmSettings, "stars").name("Enable stars");
+cdmGui.add(cdmSettings, "stars").name("Show stars");
 cdmGui.addColor(cdmSettings, "starColor").name("Star color");
-cdmGui.add(cdmSettings, "darkMatter").name("Enable DM");
+cdmGui.add(cdmSettings, "darkMatter").name("Show DM");
 cdmGui.addColor(cdmSettings, "darkColor").name("DM color");
 
 const sidmSettings = {
@@ -158,9 +158,9 @@ const sidmSettings = {
   darkColor: "#aa3377",
 };
 const sidmGui = gui.addFolder("SIDM");
-sidmGui.add(sidmSettings, "stars").name("Enable stars");
+sidmGui.add(sidmSettings, "stars").name("Show stars");
 sidmGui.addColor(sidmSettings, "starColor").name("Star color");
-sidmGui.add(sidmSettings, "darkMatter").name("Enable DM");
+sidmGui.add(sidmSettings, "darkMatter").name("Show DM");
 sidmGui.addColor(sidmSettings, "darkColor").name("DM color");
 
 function animate() {
